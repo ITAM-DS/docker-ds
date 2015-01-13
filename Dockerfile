@@ -13,13 +13,14 @@ RUN echo deb http://mx.archive.ubuntu.com/ubuntu trusty universe >> /etc/apt/sou
 RUN echo deb http://mx.archive.ubuntu.com/ubuntu trusty restricted  >> /etc/apt/sources.list
 RUN apt-get update
 
-RUN apt-get install libhdf5-dev
-RUN apt-get install hdf5
-RUN apt-get install postgresql postgresql-client-common libpq5 libpq-dev postgresql-contrib
-RUN apt-get install r-base r-base-dev littler python-rpy python-rpy-doc
-RUN apt-get install octave gdebi-core libapparmor1
-ADD http://download2.rstudio.org/rstudio-server-0.98.1091-amd64.deb
-RUN dpkg -i  rstudio-server-0.98.1091-amd64.deb
+RUN apt-get -y install libhdf5-dev
+RUN apt-get -y install hdf5-tools hdf5-helpers
+RUN apt-get -y install postgresql postgresql-client-common libpq5 libpq-dev postgresql-contrib postgis postgresql-9.4-plsh postgresql-9.4-plr
+RUN apt-get -y install r-base r-base-dev littler python-rpy python-rpy-doc
+RUN apt-get -y install octave gdebi-core libapparmor1
+ADD http://download2.rstudio.org/rstudio-server-0.98.1091-amd64.deb /
+RUN apt-get -y install libssl0.9.8 libssl-dev psmisc
+RUN dpkg -i  /rstudio-server-0.98.1091-amd64.deb
 
 RUN pip install numpy sympy matplotlib scipy pandas
 RUN pip install ipython[notebook] pyzmq jinja2 pygments bokeh
