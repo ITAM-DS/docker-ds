@@ -1,8 +1,9 @@
-# Version: 0.0.1
+# Version: 0.0.2
 
 FROM nanounanue/docker-base
 MAINTAINER Adolfo De Unánue Tiscareño "adolfo.deunanue@itam.mx"
 
+ENV REFRESHED_AT 2015-01-15
 
 ENV DEBIAN-FRONTEND noninteractive
 ENV PATH /usr/lib/rstudio-server/bin/:$PATH 
