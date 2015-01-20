@@ -26,6 +26,9 @@ RUN dpkg -i  /rstudio-server-0.98.1091-amd64.deb \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin 
 
+RUN apt-get -y install cowsay poppler-utils jq # Cowsay, go, pdftotext (entre otras cosas) y jq
+# jq se puede aprender como http://stedolan.github.io/jq/tutorial/
+
 ## Templates para pandoc
 RUN mkdir -p /opt/pandoc \
 && git clone https://github.com/jgm/pandoc-templates.git /opt/pandoc/templates \
@@ -47,14 +50,26 @@ RUN pip install brewer2mpl prettyplotlib pymc numexpr
 RUN pip install h5py
 RUN pip install tables
 
+## Para "scrapear"
+RUN pip install beautifulsoup4
+
+## Herramientas de líneas de comando
+RUN pip install awscli # Línea de comandos de AWS
+RUN pip install csvkit # http://csvkit.readthedocs.org
+
 # El password se me olvidó :)
 RUN echo 'itam:itam' | chpasswd
 
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY userconf.sh /usr/bin/userconf.sh
 
+## Montamos un volumen
+VOLUME [ "/home/itam/proyectos" ]
+
+# Para Rstudio
 EXPOSE 8787
-EXPOSE 8888
+
+# Para IPython notebook
+EXPOSE 8888 
 
 CMD ["/usr/bin/supervisord"]
