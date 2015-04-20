@@ -24,7 +24,7 @@ RUN add-apt-repository ppa:staticfloat/juliareleases \
 
 RUN apt-get update
 
-RUN apt-get -y install r-base r-base-dev littler python-rpy python-rpy-doc
+RUN apt-get -y install r-base r-base-dev littler python-rpy python-rpy-doc gawk
 RUN apt-get -y install  gdebi-core libapparmor1 octave octave-common octave-doc octave-general octave-image octave-linear-algebra \
 octave-odepkg octave-strings octave-symbolic octave-signal octave-io julia
 ADD http://download2.rstudio.org/rstudio-server-0.98.1091-amd64.deb /
