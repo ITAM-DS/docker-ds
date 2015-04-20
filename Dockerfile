@@ -27,10 +27,10 @@ RUN apt-get update
 RUN apt-get -y install r-base r-base-dev littler python-rpy python-rpy-doc gawk
 RUN apt-get -y install  gdebi-core libapparmor1 octave octave-common octave-doc octave-general octave-image octave-linear-algebra \
 octave-odepkg octave-strings octave-symbolic octave-signal octave-io julia
-ADD http://download2.rstudio.org/rstudio-server-0.98.1091-amd64.deb /
+ADD http://download2.rstudio.org/rstudio-server-0.98.1103-amd64.deb /
 RUN apt-get -y install libssl0.9.8 libssl-dev psmisc supervisor
 RUN dpkg -i  /rstudio-server-0.98.1091-amd64.deb \
-&& rm /rstudio-server-0.98.1091-amd64.deb \
+&& rm /rstudio-server-0.98.1103-amd64.deb \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin
 
