@@ -16,7 +16,7 @@ RUN gpg -a --export E084DAB9 | apt-key add -
 
 RUN echo deb http://cran.rstudio.com/bin/linux/ubuntu trusty/ >> /etc/apt/sources.list
 
-ENV RSTUDIO_VERSIOM=0.98.1103
+ENV RSTUDIO_VERSIOM 0.98.1103
 
 ## Instalar Julia
 RUN add-apt-repository ppa:staticfloat/juliareleases \
