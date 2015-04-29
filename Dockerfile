@@ -27,7 +27,7 @@ RUN apt-get -y --no-install-recommends install  gdebi-core libapparmor1 octave o
 octave-odepkg octave-strings octave-symbolic octave-signal octave-io julia
 RUN apt-get -y install libssl0.9.8 libssl-dev psmisc supervisor
 
-ADD http://download2.rstudio.org/rstudio-server-0.98.1103-amd64.deb /tmp
+RUN wget -P /tmp -c  http://download2.rstudio.org/rstudio-server-0.98.1103-amd64.deb
 
 RUN dpkg -i  /tmp/rstudio-server-0.98.1103-amd64.deb \
 && rm /tmp/rstudio-server-0.98.1103-amd64.deb \
