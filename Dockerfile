@@ -24,8 +24,8 @@ RUN add-apt-repository ppa:staticfloat/juliareleases \
 
 RUN apt-get update
 
-RUN apt-get -y install r-base r-base-dev littler python-rpy python-rpy-doc gawk
-RUN apt-get -y install  gdebi-core libapparmor1 octave octave-common octave-doc octave-general octave-image octave-linear-algebra \
+RUN apt-get -y --no-install-recommends install r-base r-base-dev littler python-rpy python-rpy-doc gawk
+RUN apt-get -y --no-install-recommends install  gdebi-core libapparmor1 octave octave-common octave-doc octave-general octave-image octave-linear-algebra \
 octave-odepkg octave-strings octave-symbolic octave-signal octave-io julia
 ADD http://download2.rstudio.org/rstudio-server-$RSTUDIO_VERSION-amd64.deb /
 RUN apt-get -y install libssl0.9.8 libssl-dev psmisc supervisor
@@ -45,9 +45,9 @@ RUN mkdir -p /opt/pandoc \
 && ln -s /opt/pandoc/templates /root/.pandoc/templates \
 && ln -s /opt/pandoc/templates /home/itam/.pandoc/templates
 
-RUN apt-get -y install libhdf5-dev
-RUN apt-get -y install hdf5-tools hdf5-helpers
-RUN apt-get -y install postgresql-client-common libpq5 libpq-dev
+RUN apt-get -y --no-install-recommends install libhdf5-dev
+RUN apt-get -y --no-install-recommends install hdf5-tools hdf5-helpers
+RUN apt-get -y --no-install-recommends install postgresql-client-common libpq5 libpq-dev
 
 RUN pip install numpy sympy matplotlib scipy pandas
 RUN pip install ipython[notebook] pyzmq jinja2 pygments bokeh
