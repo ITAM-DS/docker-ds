@@ -16,7 +16,7 @@ RUN gpg -a --export E084DAB9 | apt-key add -
 
 RUN echo deb http://cran.rstudio.com/bin/linux/ubuntu trusty/ >> /etc/apt/sources.list
 
-ENV RSTUDIO_VERSIOM 0.98.1103
+ENV RSTUDIO_VERSION 0.98.1103
 
 ## Instalar Julia
 RUN add-apt-repository ppa:staticfloat/juliareleases \
@@ -27,10 +27,12 @@ RUN apt-get update
 RUN apt-get -y --no-install-recommends install r-base r-base-dev littler python-rpy python-rpy-doc gawk
 RUN apt-get -y --no-install-recommends install  gdebi-core libapparmor1 octave octave-common octave-doc octave-general octave-image octave-linear-algebra \
 octave-odepkg octave-strings octave-symbolic octave-signal octave-io julia
-ADD http://download2.rstudio.org/rstudio-server-$RSTUDIO_VERSION-amd64.deb /
 RUN apt-get -y install libssl0.9.8 libssl-dev psmisc supervisor
-RUN dpkg -i  /rstudio-server-$RSTUDIO_VERSION-amd64.deb \
-&& rm /rstudio-server-$RSTUDIO_VERSION-amd64.deb \
+
+ADD http://download2.rstudio.org/rstudio-server-$RSTUDIO_VERSION-amd64.deb /tmp
+
+RUN dpkg -i  /tmp/rstudio-server-$RSTUDIO_VERSION-amd64.deb \
+&& rm /tmp/rstudio-server-$RSTUDIO_VERSION-amd64.deb \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin
 
