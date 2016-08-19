@@ -21,7 +21,7 @@ RUN gpg -a --export E084DAB9 | apt-key add -
 RUN echo deb http://cran.rstudio.com/bin/linux/ubuntu trusty/ >> /etc/apt/sources.list
 
 RUN apt-get -qq  update \
-    && apt-get -y --no-install-recommends install r-base r-base-dev gdebi-core libapparmor1 libssl0.9.8 libssl-dev \
+    && apt-get -y --no-install-recommends install r-base r-base-dev gdebi-core libapparmor1 libssl1.0.0 libssl-dev \
     psmisc supervisor poppler-utils postgresql-client-common libpq5 libpq-dev
 
 RUN wget -qO -P /tmp - ${RSTUDIO_URL}
