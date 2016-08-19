@@ -25,7 +25,7 @@ RUN apt-get -qq  update \
     psmisc supervisor poppler-utils postgresql-client-common libpq5 libpq-dev
 
 
-RUN wget  -P /tmp - https://download2.rstudio.org/rstudio-server-0.99.903-amd64.deb
+RUN curl ${RSTUDIO_URL} > /tmp/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 
 RUN dpkg -i  /tmp/rstudio-server-${RSTUDIO_VERSION}-amd64.deb \
 && rm /tmp/rstudio-server-${RSTUDIO_VERSION}-amd64.deb \
