@@ -10,7 +10,7 @@ ENV PATH /usr/lib/rstudio-server/bin/:$PATH
 
 ENV RSTUDIO_VERSION 0.99.903
 
-ENV RSTUDIO_URL http://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
+ENV RSTUDIO_URL https://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 
 ## Cambiamos a root
 USER root
@@ -23,6 +23,7 @@ RUN echo deb http://cran.rstudio.com/bin/linux/ubuntu trusty/ >> /etc/apt/source
 RUN apt-get -qq  update \
     && apt-get -y --no-install-recommends install r-base r-base-dev gdebi-core libapparmor1 libssl1.0.0 libssl-dev \
     psmisc supervisor poppler-utils postgresql-client-common libpq5 libpq-dev
+
 
 RUN wget -qO -P /tmp - ${RSTUDIO_URL}
 
